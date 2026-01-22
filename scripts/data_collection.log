@@ -1,0 +1,20 @@
+2026-01-21 15:50:36,567 - INFO - Successfully collected data for: Gender Queer
+2026-01-21 15:50:50,069 - INFO - Successfully collected data for: All Boys Aren't Blue
+2026-01-21 15:51:03,282 - INFO - Successfully collected data for: The Bluest Eye
+2026-01-21 15:51:26,195 - INFO - Successfully collected data for: Gender Queer
+2026-01-21 15:51:39,162 - INFO - Successfully collected data for: All Boys Aren't Blue
+2026-01-21 15:51:51,915 - INFO - Successfully collected data for: The Bluest Eye
+2026-01-22 13:51:41,322 - INFO - Successfully collected data for: Gender Queer
+2026-01-22 13:51:42,335 - WARNING - Attempt 1 failed for All Boys Aren't Blue: The request failed: Google returned a response with code 429. Retrying...
+2026-01-22 13:52:16,344 - INFO - Successfully collected data for: All Boys Aren't Blue
+2026-01-22 13:52:30,091 - INFO - Successfully collected data for: The Bluest Eye
+2026-01-22 14:03:21,254 - INFO - Successfully collected data for: Gender Queer
+2026-01-22 14:03:35,270 - INFO - Successfully collected data for: All Boys Aren't Blue
+2026-01-22 14:03:48,907 - INFO - Successfully collected data for: The Bluest Eye
+2026-01-22 14:07:26,382 - WARNING - Attempt 1 failed for Gender Queer: The request failed: Google returned a response with code 429. Retrying...
+2026-01-22 14:07:59,943 - WARNING - Attempt 2 failed for Gender Queer: The request failed: Google returned a response with code 429. Retrying...
+2026-01-22 14:08:33,748 - INFO - Successfully collected data for: Gender Queer
+2026-01-22 14:08:47,938 - INFO - Successfully collected data for: All Boys Aren't Blue
+2026-01-22 14:08:48,890 - WARNING - Attempt 1 failed for The Bluest Eye: The request failed: Google returned a response with code 429. Retrying...
+2026-01-22 14:09:09,738 - WARNING - Attempt 2 failed for The Bluest Eye: The request failed: Google returned a response with code 429. Retrying...
+2026-01-22 14:09:43,253 - INFO - Successfully collected data for: The Bluest Eye
