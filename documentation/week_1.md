@@ -1,0 +1,1 @@
+The current CSV I am using doesn't have location or ban date, so I'm unable to complete all the tasks for the data exploration Jupyter Notebook. At this moment, I also cannot do the 10 book test because I am lacking some of the required information.
