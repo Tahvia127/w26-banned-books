@@ -1,1 +1,3 @@
 The current CSV I am using doesn't have location or ban date, so I'm unable to complete all the tasks for the data exploration Jupyter Notebook. At this moment, I also cannot do the 10 book test because I am lacking some of the required information.
+
+Update: I have chosen to start with the PEN 2024 - 2025 CSV found online. I have been able to finish work for my Jupyter Notebook, and will be looking to run through the next few tasks as I have all the data set up now.
