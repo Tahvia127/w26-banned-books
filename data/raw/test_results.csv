@@ -1,11 +1,11 @@
-book_title,ban_date,avg_search_before,avg_search_after,max_search_before,max_search_after,min_search_before,min_search_after,percent_change,absolute_change,volatility,data_collected,collection_successful,error,state
-Filippo Lippi,2025-04-01,,,,,,,,,,2026-01-30 14:24:54,False,"HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22Filippo+Lippi%22%2C+%22time%22%3A+%222025-01-01+2025-03-31%22%2C+%22geo%22%3A+%22US%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D (Caused by NameResolutionError(""HTTPSConnection(host='trends.google.com', port=443): Failed to resolve 'trends.google.com' ([Errno 8] nodename nor servname provided, or not known)""))",Tennessee
-The Mist,2025-06-01,75.06,65.28,100.0,100.0,61.0,48.0,-13.03,-9.78,10.08,2026-01-30 14:27:11,True,,Florida
-Last Night at the Telegraph Club,2025-04-01,,,,,,,,,,2026-01-30 14:29:30,False,cannot access local variable 'before_values' where it is not associated with a value,Tennessee
-Wonders of the Invisible World,2024-12-01,,,,,,,,,,2026-01-30 14:48:06,False,"HTTPSConnectionPool(host='trends.google.com', port=443): Read timed out.",Florida
-"Dragon Ball, Vol. 5",2025-05-01,,,,,,,,,,2026-01-30 15:23:09,False,cannot access local variable 'after_values' where it is not associated with a value,Tennessee
-The End and Other Beginnings: Stories from the Future,2025-02-01,,,,,,,,,,2026-01-30 15:26:29,False,"HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22The+End+and+Other+Beginnings%3A+Stories+from+the+Future%22%2C+%22time%22%3A+%222024-11-03+2025-01-31%22%2C+%22geo%22%3A+%22US%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D (Caused by NameResolutionError(""HTTPSConnection(host='trends.google.com', port=443): Failed to resolve 'trends.google.com' ([Errno 8] nodename nor servname provided, or not known)""))",Tennessee
-Echo After Echo,2024-12-01,,,,,,,,,,2026-01-30 15:32:44,False,"HTTPSConnectionPool(host='trends.google.com', port=443): Max retries exceeded with url: /trends/api/explore?hl=en-US&tz=360&req=%7B%22comparisonItem%22%3A+%5B%7B%22keyword%22%3A+%22Echo+After+Echo%22%2C+%22time%22%3A+%222024-09-02+2024-11-30%22%2C+%22geo%22%3A+%22US%22%7D%5D%2C+%22category%22%3A+0%2C+%22property%22%3A+%22%22%7D (Caused by NameResolutionError(""HTTPSConnection(host='trends.google.com', port=443): Failed to resolve 'trends.google.com' ([Errno 8] nodename nor servname provided, or not known)""))",Florida
-Song of Solomon,2025-06-01,65.01,66.1,100.0,100.0,41.0,40.0,1.67,1.09,12.84,2026-01-30 15:34:07,True,,Florida
-Winterkeep,2025-05-01,,,,,,,,,,2026-01-30 15:35:28,False,cannot access local variable 'before_values' where it is not associated with a value,Florida
-Slaughterhouse-Five,2024-11-01,,,,,,,,,,2026-01-30 15:36:48,False,cannot access local variable 'after_values' where it is not associated with a value,Texas
+book_title,ban_date,avg_search_before,avg_search_after,max_search_before,max_search_after,min_search_before,min_search_after,percent_change,absolute_change,volatility,data_collected,collection_successful,state,error
+Lucky (AS),2024-04-01,44.36,38.78,100.0,100.0,0.0,0.0,-12.58,-5.58,30.21,2026-02-05 20:37:03,True,Florida,
+Empire of Storms,2023-12-01,22.07,49.77,100.0,100.0,0.0,0.0,125.53,27.7,30.35,2026-02-05 20:37:10,True,Florida,
+My Friends and Me,2024-06-01,74.78,62.4,100.0,100.0,39.0,27.0,-16.55,-12.38,13.07,2026-02-05 20:37:16,True,Iowa,
+Culturally Responsive Teaching and The Brain: Promoting Authentic Engagement and Rigor Among Culturally and Linguistically Diverse Students,2021-08-01,,,,,,,,,,,False,Pennsylvania,The request failed: Google returned a response with code 400
+Burned (EH),2023-03-01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2026-02-05 20:37:23,True,Florida,
+Boy Toy,2023-08-01,72.17,67.53,100.0,100.0,49.0,47.0,-6.42,-4.63,10.92,2026-02-05 20:37:29,True,Texas,
+Gentlemen,2025-02-01,33.6,65.28,100.0,100.0,14.0,49.0,94.28,31.68,21.71,2026-02-05 20:37:35,True,Tennessee,
+Needful Things,2023-08-01,28.49,25.8,100.0,100.0,0.0,0.0,-9.44,-2.69,30.52,2026-02-05 20:37:41,True,Florida,
+The Poet X,2023-11-01,25.62,26.44,100.0,100.0,0.0,0.0,3.21,0.82,31.81,2026-02-05 20:37:47,True,Florida,
+All Boys Aren't Blue,2021-10-01,0.0,2.58,0.0,100.0,0.0,0.0,inf,2.58,14.28,2026-02-05 20:37:54,True,Utah,

@@ -177,6 +177,125 @@ def get_trends_data(book_title, ban_date_str, retries=3):
                     'error': str(e)
                 }
 
+def get_trends_data_update(book_title, ban_date_str, retries=3, timeout=30):
+    """
+    Collect Google Trends data for a book around its ban date
+    
+    Parameters:
+    - book_title: String, the book title to search
+    - ban_date_str: String in format 'YYYY-MM-DD'
+    - retries: Number of times to retry if request fails
+    - timeout: Maximum seconds to wait for each API call
+    
+    Returns:
+    - Dictionary with before/after search volumes
+    """
+    
+    # Convert ban date string to datetime
+    try:
+        ban_date = datetime.strptime(ban_date_str, '%Y-%m-%d')
+    except:
+        logging.error(f"Invalid date format for {book_title}: {ban_date_str}")
+        return None
+    
+    # Define time periods
+    before_start = ban_date - timedelta(days=90)
+    before_end = ban_date - timedelta(days=1)
+    after_start = ban_date + timedelta(days=1)
+    after_end = ban_date + timedelta(days=90)
+    
+    # Format dates for pytrends
+    before_timeframe = f"{before_start.strftime('%Y-%m-%d')} {before_end.strftime('%Y-%m-%d')}"
+    after_timeframe = f"{after_start.strftime('%Y-%m-%d')} {after_end.strftime('%Y-%m-%d')}"
+    
+    # Try collecting data with retries
+    for attempt in range(retries):
+        try:
+            # Get BEFORE ban data with timeout
+            pytrends.build_payload([book_title], timeframe=before_timeframe, geo='US')
+            before_df = pytrends.interest_over_time()
+
+            # Quick check: if no data at all, don't bother with retries
+            if before_df.empty or book_title not in before_df.columns:
+                before_avg = before_max = before_min = 0
+                before_values = np.array([])
+                logging.info(f"No 'before' data for {book_title} - treating as zero interest")
+            else:
+                before_values = before_df[book_title].values
+                before_avg = np.mean(before_values)
+                before_max = np.max(before_values)
+                before_min = np.min(before_values)
+            
+            # Shorter wait since we're moving quickly
+            time.sleep(2)
+            
+            # Get AFTER ban data
+            pytrends.build_payload([book_title], timeframe=after_timeframe, geo='US')
+            after_df = pytrends.interest_over_time()
+            
+            if after_df.empty or book_title not in after_df.columns:
+                after_avg = after_max = after_min = 0
+                after_values = np.array([])
+                logging.info(f"No 'after' data for {book_title} - treating as zero interest")
+            else:
+                after_values = after_df[book_title].values
+                after_avg = np.mean(after_values)
+                after_max = np.max(after_values)
+                after_min = np.min(after_values)
+            
+            # Calculate metrics
+            if before_avg > 0:
+                percent_change = ((after_avg - before_avg) / before_avg) * 100
+                absolute_change = after_avg - before_avg
+            else:
+                percent_change = 0 if after_avg == 0 else float('inf')
+                absolute_change = after_avg
+            
+            # Calculate volatility
+            all_values = np.concatenate([before_values, after_values]) if len(before_values) > 0 or len(after_values) > 0 else np.array([])
+            volatility = np.std(all_values) if len(all_values) > 0 else 0
+            
+            logging.info(f"Successfully collected data for: {book_title}")
+            
+            return {
+                'book_title': book_title,
+                'ban_date': ban_date_str,
+                'avg_search_before': round(before_avg, 2),
+                'avg_search_after': round(after_avg, 2),
+                'max_search_before': before_max,
+                'max_search_after': after_max,
+                'min_search_before': before_min,
+                'min_search_after': after_min,
+                'percent_change': round(percent_change, 2),
+                'absolute_change': round(absolute_change, 2),
+                'volatility': round(volatility, 2),
+                'data_collected': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'collection_successful': True
+            }
+            
+        except Exception as e:
+            # Only retry on actual errors, not empty data
+            if "429" in str(e) or "quota" in str(e).lower():
+                # Rate limit hit - wait and retry
+                if attempt < retries - 1:
+                    logging.warning(f"Rate limit for {book_title}. Waiting before retry {attempt + 2}/{retries}")
+                    time.sleep(20)
+                else:
+                    logging.error(f"Rate limit persists for {book_title}")
+                    return None
+            else:
+                # Other error - log and fail fast
+                logging.error(f"Error collecting data for {book_title}: {e}")
+                return {
+                    'book_title': book_title,
+                    'ban_date': ban_date_str,
+                    'collection_successful': False,
+                    'error': str(e)
+                }
+    
+    # If we get here, all retries exhausted
+    return None
+
 # TEST FUNCTION (Week 1)
 def test_collection():
     """Test the collection function with a few books"""
@@ -204,7 +323,7 @@ def test_collection():
 
 
 # FULL COLLECTION FUNCTION (Week 2)
-def collect_all_books(input_csv='pen_america_banned_books.csv', output_csv='data/raw/google_trends_complete.csv'):
+def collect_all_books(input_csv='data_clean.csv', output_csv='data/raw/google_trends_complete.csv', sleep_between_books = 2):
     """
     Collect Google Trends data for all books in PEN America dataset
     
@@ -221,14 +340,16 @@ def collect_all_books(input_csv='pen_america_banned_books.csv', output_csv='data
     
     # Process each book with progress bar
     for index, row in tqdm(books_df.iterrows(), total=len(books_df), desc="Collecting data"):
-        book_title = row['Book Title']  # Adjust column name as needed
-        ban_date = row['Ban Date']       # Adjust column name as needed
+        book_title = row['Title']  # Adjust column name as needed
+        ban_date = row['Ban Date Normalized']       # Adjust column name as needed
         
         # Collect data
-        result = get_trends_data(book_title, ban_date)
+        result = get_trends_data_update(book_title, ban_date)
         if result:
             result['state'] = row.get('State', 'Unknown')  # Add state if available
             all_results.append(result)
+
+        time.sleep(sleep_between_books)
         
         # Save progress every 10 books
         if (index + 1) % 10 == 0:
@@ -256,7 +377,7 @@ if __name__ == "__main__":
     print("Running test collection...")
     test_collection()
     
-    # Week 2: Uncomment this to run full collection
-    # print("Running full collection...")
-    # collect_all_books()
+    #Week 2: Uncomment this to run full collection
+    print("Running full collection...")
+    collect_all_books()
     
