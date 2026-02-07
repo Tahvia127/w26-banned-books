@@ -1,0 +1,3 @@
+I have gone through 700 books on the PEN America dataset. 
+With the data, I have cleaned it, made summary statistics and made visualizations.
+However, I've just got rate limit banned, so I cannot make any more progress.
