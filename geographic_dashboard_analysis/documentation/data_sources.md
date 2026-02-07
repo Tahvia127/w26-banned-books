@@ -26,6 +26,7 @@ Years: 2020 (2024 pending availability)
 Description: State-level presidential election results used to classify political alignment.
 
 Source: Bucknell Digital Commons
+https://digitalcommons.bucknell.edu/election_data/2/
 Geographic Level: County/State  
 Years: 2024
 Description: State and county level presidential election results to supplement (potentially) MIT election data. 2020/2024 election results are included.
