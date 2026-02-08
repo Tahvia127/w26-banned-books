@@ -227,7 +227,7 @@ def get_trends_data_update(book_title, ban_date_str, retries=3, timeout=30):
                 before_min = np.min(before_values)
             
             # Shorter wait since we're moving quickly
-            time.sleep(2)
+            time.sleep(4)
             
             # Get AFTER ban data
             pytrends.build_payload([book_title], timeframe=after_timeframe, geo='US')
@@ -323,7 +323,7 @@ def test_collection():
 
 
 # FULL COLLECTION FUNCTION (Week 2)
-def collect_all_books(input_csv='data_clean.csv', output_csv='data/raw/google_trends_complete.csv', sleep_between_books = 2):
+def collect_all_books(input_csv='data_clean.csv', output_csv='data/raw/google_trends_complete.csv', sleep_between_books = 8):
     """
     Collect Google Trends data for all books in PEN America dataset
     
