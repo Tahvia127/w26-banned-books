@@ -1,0 +1,60 @@
+STATISTICAL ANALYSIS RESULTS
+Date: 2026-02-13 15:59
+N = 2440 titles with Google Trends + category data
+=================================================================
+
+TEST 1: One-sample t-test (mean % change ≠ 0)
+  N=1961, Mean=-6.73%, Median=-6.50%
+  t=-2.3874, p=0.017060, Cohen d=-0.0539
+  → SIGNIFICANT at α=0.05
+  Proportion increased: 1189/2440 (48.7%), z=-1.2552, p=0.209423
+
+TEST 2: Kruskal-Wallis (Streisand by challenge reason)
+  Groups: 8, H=2.1710, p=0.949772, η²=0.0016
+  → NOT significant
+    Gender politics & feminism                : N= 31, mean Δ= +1.27
+    Race & systemic inequality                : N=130, mean Δ= +1.12
+    LGBTQ+ identity & sexuality               : N=306, mean Δ= +0.52
+    Mental health & trauma                    : N=217, mean Δ= +0.41
+    Age-appropriateness concerns              : N=1482, mean Δ= +0.32
+    Sexual or romantic content                : N=560, mean Δ= +0.11
+    Violence & mature themes                  : N=637, mean Δ= -0.41
+    Religion & worldview                      : N= 82, mean Δ= -1.46
+
+TEST 3: Pairwise Mann-Whitney U (post-hoc)
+  28 comparisons, Bonferroni α=0.00179
+  No pairs significant after correction
+
+TEST 4: Chi-square (spike rates by challenge reason)
+  χ²=1.9085, df=7, p=0.964731, Cramér V=0.0235
+  → NOT significant
+    LGBTQ+ identity & sexuality               : 49.3% spike rate
+    Age-appropriateness concerns              : 48.9% spike rate
+    Sexual or romantic content                : 48.6% spike rate
+    Race & systemic inequality                : 48.5% spike rate
+    Gender politics & feminism                : 48.4% spike rate
+    Violence & mature themes                  : 47.7% spike rate
+    Mental health & trauma                    : 45.2% spike rate
+    Religion & worldview                      : 43.9% spike rate
+
+★ TEST 5: Kruskal-Wallis (Streisand by popularity tier)
+  H=397.8679, p=0.0000000000, η²=0.1164
+  → SIGNIFICANT
+    Popular             : N=336, mean Δ= +6.37, spike rate=65%
+    Moderate Interest   : N=199, mean Δ= +4.95, spike rate=58%
+    Unknown/Niche       : N=479, mean Δ= +1.46, spike rate=100%
+    Low Interest        : N=870, mean Δ= -0.27, spike rate=18%
+    Very Popular        : N=556, mean Δ= -5.25, spike rate=39%
+  Post-hoc (Bonferroni α=0.00500):
+    * Low Interest         vs Moderate Interest   : p=0.000012
+    * Low Interest         vs Popular             : p=0.000000
+    * Low Interest         vs Very Popular        : p=0.000000
+    * Low Interest         vs Unknown/Niche       : p=0.000000
+    * Moderate Interest    vs Very Popular        : p=0.000000
+    * Popular              vs Very Popular        : p=0.000000
+    * Popular              vs Unknown/Niche       : p=0.000001
+    * Very Popular         vs Unknown/Niche       : p=0.000000
+
+TEST 6: Correlation (ban frequency vs Streisand)
+  Ban instances vs spike: ρ=0.0069, p=0.733375
+  States banned vs spike: ρ=0.0086, p=0.672144
