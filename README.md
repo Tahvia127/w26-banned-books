@@ -1,3 +1,8 @@
+> **This is my fork of a [UChicago Data Science Society](https://github.com/uchicago-dss/w26-banned-books) team project** (Winter 2026).
+> Work in this fork covers the PEN America ban records, ACS demographic data, 2024 county election results, and the Google Trends category analysis.
+
+---
+
 # w26-banned-books
 
 This project examines the relationship between book bans and public engagement to understand whether censorship attempts backfire through increased attention. Using PEN America’s banned books database as our foundation, members will track which books face challenges across different states and school districts. Members will then analyze corresponding shifts in public interest through Google Trends search data, Goodreads ratings and review activity, and social media discourse patterns. 
